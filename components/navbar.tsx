@@ -13,12 +13,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from 'next/link';
 
-const pages = [];
-
-function ResponsiveAppBar({ userPresent }) {
+function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: { currentTarget: React.SetStateAction<null>; }) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -45,7 +43,7 @@ function ResponsiveAppBar({ userPresent }) {
               textDecoration: 'none',
             }}
           >
-            FC SaaS
+            Amanuensis Machina
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -75,11 +73,6 @@ function ResponsiveAppBar({ userPresent }) {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
               <MenuItem>
                 <Link href={'/generate'} style={{ textDecoration: 'none' }}>
                   <Typography textAlign="center" sx={{ color: '#353535' }}>Generate</Typography>
@@ -124,15 +117,6 @@ function ResponsiveAppBar({ userPresent }) {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
             <Button 
                 href={'/generate'}
                 sx={{ my: 2, color: 'white', display: 'block' }}

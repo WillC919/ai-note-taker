@@ -82,7 +82,7 @@ const PricingPlans = () => (
             <Typography gutterBottom>
               Unlimited flashcards and storage, with priority support.
             </Typography>
-            <Button variant="contained" sx={{ mt: 2, backgroundColor: '#3C6E71', '&:hover': { backgroundColor: '#3C6E71' } }} onClick={handleSubmit}>
+            <Button variant="contained" sx={{ mt: 2, backgroundColor: '#3C6E71', '&:hover': { backgroundColor: '#3C6E71' } }}>
               Choose Pro
             </Button>
           </Box>
