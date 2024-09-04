@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     // ffmpeg().input(filePath).output(newFilePath).run();
 
     // Transcribe using OpenAI Whisper model (or similar)
-    const transcript = await openai.createTranscription({
+    const transcript = await openai.audio.transcriptions.create({
       model: "whisper-1", // Example model, use appropriate OpenAI transcription model
       file: fs.createReadStream(filePath),
     });
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     // Remove the temporary file
     fs.unlinkSync(filePath);
 
-    return NextResponse.json({ transcript: transcript.data.text });
+    return NextResponse.json({ transcript: transcript.text });
   } catch (error) {
     console.error('Error processing file:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
