@@ -29,18 +29,18 @@ const Home: React.FC = () => {
       <ResponsiveAppBar userPresent={true} />
 
       {/* Headline and call to action buttons */}
-      <Box sx={{ textAlign: "center", my: 4, height: "85vh", paddingTop: "27vh" }}>
+      <Box sx={{ textAlign: "center", my: 4, paddingTop: "27vh" }}>
         <Container>
           <Typography variant="h2" component="h1" gutterBottom>
-            Welcome to Flashcard SaaS
+            Welcome to Amanuensis Mach
           </Typography>
           <Typography variant="h5" component="h2" gutterBottom>
-            The easiest way to create flashcards from your text.
+            Easy way to speed through lectures.
           </Typography>
           <Button
             variant="contained"
             sx={{ mt: 2, mr: 2, backgroundColor: "#3C6E71", '&:hover': { backgroundColor: "#3C6E71" } }}
-            href="/generate"
+            href="/upload"
           >
             Get Started
           </Button>
@@ -50,55 +50,6 @@ const Home: React.FC = () => {
           >
             Learn More
           </Button>
-        </Container>
-      </Box>
-
-      {/* Features of app */}
-      <Box sx={{ textAlign: "center", backgroundColor: "#3C6E71", color: "#fff", py: 10 }}>
-        <Container>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Features
-          </Typography>
-
-          {/* Feature items */}
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Easy Text Input
-              </Typography>
-              <Typography>
-                Input your text and let our software do the rest! Creating
-                flashcards has never been easier.
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Smart Flashcards
-              </Typography>
-              <Typography>
-                Our AI intelligently breaks down your text into concise
-                flashcards, perfect for studying.
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Accessible Anywhere
-              </Typography>
-              <Typography>
-                Access your flashcards any time from any device. Study on the go
-                with ease.
-              </Typography>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Pricing section */}
-      <Box sx={{ backgroundColor: "#353535", py: 4 }}>
-        <Container>
-          <PricingPlans />
         </Container>
       </Box>
     </Box>

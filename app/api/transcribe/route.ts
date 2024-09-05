@@ -1,7 +1,7 @@
 // src/app/api/transcribe/route.ts
 import { NextResponse } from 'next/server';
 import OpenAI from "openai";
-// import ffmpeg from 'fluent-ffmpeg';
+//import ffmpeg from 'fluent-ffmpeg';
 import fs from 'fs';
 import path from 'path';
 
@@ -19,13 +19,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'File is required' }, { status: 400 });
     }
 
+    // Define the upload directory and ensure it exists
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    
+    // Create the directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
     // Save the file temporarily
-    const filePath = path.join(process.cwd(), 'public', 'uploads', file.name);
+    const filePath = path.join(uploadDir, file.name);
     fs.writeFileSync(filePath, Buffer.from(await file.arrayBuffer()));
 
     // Convert to a suitable format if necessary using FFmpeg
     // (e.g., convert to .wav or other formats suitable for transcription)
-    // Note: You need to configure ffmpeg path if necessary on your environment.
     // ffmpeg().input(filePath).output(newFilePath).run();
 
     // Transcribe using OpenAI Whisper model (or similar)
@@ -43,3 +50,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+   
