@@ -1,12 +1,12 @@
-"use client"; // This directive enables client-side rendering in a Next.js application.
-import { useEffect, useState } from "react"; // Import hooks from React.
-import { useRouter } from "next/navigation"; // Import Next.js navigation hook for programmatic routing.
-import { useUser } from "@clerk/nextjs"; // Import useUser hook from Clerk for user authentication.
-import { collection, doc, getDoc, setDoc } from "firebase/firestore"; // Import Firestore functions for database interactions.
-import FlashcardListUI from "./nameList"; // Import the FlashcardListUI component.
-import db from "@/firebase"; // Import the configured Firestore database instance.
-import { CircularProgress, Box } from "@mui/material"; // Import CircularProgress for loading animation.
-import ResponsiveAppBar from "@/components/navbar"; // Import ResponsiveAppBar for navigation.
+"use client"; 
+import { useEffect, useState } from "react"; 
+import { useRouter } from "next/navigation"; 
+import { useUser } from "@clerk/nextjs"; 
+import { collection, doc, getDoc, setDoc } from "firebase/firestore"; 
+import FlashcardListUI from "./nameList"; 
+import db from "@/firebase"; 
+import { CircularProgress, Box } from "@mui/material"; 
+import ResponsiveAppBar from "@/components/navbar";
 
 // The main Flashcard component.
 export default function Flashcard() {

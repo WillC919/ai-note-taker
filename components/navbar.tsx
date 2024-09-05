@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,10 +13,16 @@ import MenuItem from '@mui/material/MenuItem';
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from 'next/link';
 
-function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+// Define props interface
+interface ResponsiveAppBarProps {
+  userPresent: boolean;
+}
 
-  const handleOpenNavMenu = (event: { currentTarget: React.SetStateAction<null>; }) => {
+const ResponsiveAppBar: React.FC<ResponsiveAppBarProps> = ({ userPresent }) => {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+
+  // Typing the event parameter for handleOpenNavMenu
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -43,7 +49,7 @@ function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
               textDecoration: 'none',
             }}
           >
-            Amanuensis Machina
+            Amanuensis Mach
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -74,7 +80,7 @@ function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               <MenuItem>
-                <Link href={'/generate'} style={{ textDecoration: 'none' }}>
+                <Link href={'/generate'} passHref>
                   <Typography textAlign="center" sx={{ color: '#353535' }}>Generate</Typography>
                 </Link>
               </MenuItem>
@@ -82,14 +88,14 @@ function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
                 <Box>
                   <SignedOut>
                     <MenuItem>
-                      <Link href={'/sign-in'} style={{ textDecoration: 'none' }}>
+                      <Link href={'/sign-in'} passHref>
                         <Typography textAlign="center" sx={{ color: '#353535' }}>Login</Typography>
                       </Link>
                     </MenuItem>
                   </SignedOut>
                   <SignedIn>
                     <MenuItem>
-                      <Link href={'/flashcards'} style={{ textDecoration: 'none' }}>
+                      <Link href={'/flashcards'} passHref>
                         <Typography textAlign="center" sx={{ color: '#353535' }}>Collection</Typography>
                       </Link>
                     </MenuItem>
@@ -98,11 +104,12 @@ function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
               )}
             </Menu>
           </Box>
+
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="http://localhost:3000"
+            href="/"
             sx={{
               flexGrow: 1,
               display: { xs: 'flex', md: 'none' },
@@ -113,15 +120,15 @@ function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
               textDecoration: 'none',
             }}
           >
-            FC SaaS
+            Amanuensis Mach
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button 
                 href={'/generate'}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Generate
+            >
+              Generate
             </Button>
             <SignedIn>
               <Button 
@@ -146,7 +153,7 @@ function ResponsiveAppBar({ userPresent } : { userPresent: boolean}) {
                     padding: '8px 26px',
                     '&:hover': {
                       backgroundColor: 'white',
-                      opacity: 1
+                      opacity: 1,
                     }
                   }}
                 >

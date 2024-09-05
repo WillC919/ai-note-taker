@@ -1,7 +1,7 @@
 // src/app/api/transcribe/route.ts
 import { NextResponse } from 'next/server';
 import OpenAI from "openai";
-import ffmpeg from 'fluent-ffmpeg';
+// import ffmpeg from 'fluent-ffmpeg';
 import fs from 'fs';
 import path from 'path';
 

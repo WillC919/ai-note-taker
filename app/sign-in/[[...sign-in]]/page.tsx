@@ -1,16 +1,15 @@
 import React from "react";
-import {
-  Container,
-  Box,
-} from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { SignIn } from "@clerk/nextjs";
 import ResponsiveAppBar from "@/components/navbar";
 
-// UI for new users to authenticate
-export default function SignInPage() {
+// SignInPage component definition
+const SignInPage: React.FC = () => {
   return (
     <Box>
-      <ResponsiveAppBar userPresent={false}/>
+      {/* App bar with userPresent set to false indicating no user is signed in */}
+      <ResponsiveAppBar userPresent={false} />
+      
       <Container maxWidth="lg">
         <Box
           display="flex"
@@ -20,10 +19,12 @@ export default function SignInPage() {
           paddingTop="100px"
         >
           <SignIn 
-            signUpUrl="/sign-up" // Add this line to set the sign-up URL
+            signUpUrl="/sign-up" // Set the sign-up URL
           />
         </Box>
       </Container>
     </Box>
   );
 }
+
+export default SignInPage;
